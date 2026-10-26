@@ -1,0 +1,387 @@
+
+/* ===== Global Styles ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #6c63ff;
+    --dark: #1e293b;
+    --muted: #64748b;
+    --light: #f8fafc;
+    --white: #ffffff;
+    --gap: 24px;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--light);
+    color: var(--dark);
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.container {
+    width: min(1200px, 92%);
+    margin-inline: auto;
+}
+
+/* ===== Header ===== */
+.header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 4%;
+    background-color: var(--white);
+    border-bottom: 1px solid #e2e8f0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.logo span {
+    color: var(--primary);
+}
+
+.navigation {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 24px;
+}
+
+.navigation a {
+    color: var(--muted);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.navigation a:hover {
+    color: var(--primary);
+}
+
+/* ===== Hero Section ===== */
+.hero {
+    padding: 72px 0 56px;
+    max-width: 750px;
+}
+
+.eyebrow {
+    color: var(--primary);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 5vw, 3.8rem);
+    line-height: 1.15;
+    margin-bottom: 20px;
+    letter-spacing: -1.5px;
+}
+
+.hero > p:last-child {
+    color: var(--muted);
+    font-size: 1.05rem;
+    max-width: 600px;
+}
+
+/* ===== Gallery Heading ===== */
+.gallery-section {
+    padding-bottom: 64px;
+}
+
+.section-heading {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.section-heading h2,
+.about h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: 6px;
+}
+
+.section-heading p {
+    color: var(--muted);
+}
+
+.photo-count {
+    color: var(--primary);
+    font-size: 0.9rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* ===== Main CSS Grid ===== */
+.gallery-grid {
+    display: grid;
+
+    /* Required: repeat(), minmax(), and fr units */
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    /* Required: consistent gaps */
+    gap: var(--gap);
+
+    /* Required: named grid areas */
+    grid-template-areas:
+        "featured featured second"
+        "featured featured third"
+        "fourth fifth sixth"
+        "seventh eighth ninth";
+}
+
+/* Cards */
+.card {
+    min-width: 0;
+    overflow: hidden;
+    background-color: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 4px 18px rgb(15 23 42 / 5%);
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgb(15 23 42 / 12%);
+}
+
+.card img {
+    height: 220px;
+    object-fit: cover;
+    background-color: #e2e8f0;
+}
+
+.card-content {
+    padding: 18px;
+}
+
+.category {
+    display: inline-block;
+    color: var(--primary);
+    background-color: #efeeff;
+    border-radius: 20px;
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.card h3 {
+    font-size: 1.1rem;
+    line-height: 1.4;
+    margin-bottom: 8px;
+}
+
+.card-content p {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+/* Explicit named grid-area placement */
+.featured {
+    grid-area: featured;
+}
+
+.featured img {
+    height: 400px;
+}
+
+.gallery-grid > .card:nth-child(2) {
+    grid-area: second;
+}
+
+.gallery-grid > .card:nth-child(3) {
+    grid-area: third;
+}
+
+.gallery-grid > .card:nth-child(4) {
+    grid-area: fourth;
+}
+
+.gallery-grid > .card:nth-child(5) {
+    grid-area: fifth;
+}
+
+.gallery-grid > .card:nth-child(6) {
+    grid-area: sixth;
+}
+
+.gallery-grid > .card:nth-child(7) {
+    grid-area: seventh;
+}
+
+.gallery-grid > .card:nth-child(8) {
+    grid-area: eighth;
+}
+
+.gallery-grid > .card:nth-child(9) {
+    grid-area: ninth;
+}
+
+/* ===== About Section ===== */
+.about {
+    padding: 40px;
+    margin-bottom: 64px;
+    background-color: var(--white);
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+}
+
+.about p {
+    max-width: 800px;
+    color: var(--muted);
+}
+
+/* ===== Footer ===== */
+.footer {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 16px;
+    padding: 28px 4%;
+    background-color: var(--dark);
+    color: var(--white);
+}
+
+.footer p {
+    font-size: 0.9rem;
+}
+
+.footer a {
+    color: #c4bfff;
+    font-weight: 600;
+}
+
+/* ===== Tablet: 2 Columns ===== */
+@media (max-width: 900px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-areas:
+            "featured featured"
+            "second third"
+            "fourth fifth"
+            "sixth seventh"
+            "eighth ninth";
+    }
+
+    .featured img {
+        height: 320px;
+    }
+
+    .card img {
+        height: 210px;
+    }
+}
+
+/* ===== Mobile: 1 Column ===== */
+@media (max-width: 600px) {
+    :root {
+        --gap: 16px;
+    }
+
+    .header {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        padding: 16px 4%;
+        gap: 12px;
+    }
+
+    .navigation {
+        justify-content: center;
+        gap: 18px;
+    }
+
+    .hero {
+        padding: 48px 0 36px;
+    }
+
+    .hero h1 {
+        letter-spacing: -0.5px;
+    }
+
+    .section-heading {
+        grid-template-columns: 1fr;
+        align-items: start;
+    }
+
+    .gallery-grid {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+            "featured"
+            "second"
+            "third"
+            "fourth"
+            "fifth"
+            "sixth"
+            "seventh"
+            "eighth"
+            "ninth";
+    }
+
+    .featured img,
+    .card img {
+        height: 240px;
+    }
+
+    .about {
+        padding: 24px;
+        margin-bottom: 40px;
+    }
+
+    .footer {
+        grid-template-columns: 1fr;
+        text-align: center;
+        justify-items: center;
+    }
+}
+
+/* ===== Very Small Screens ===== */
+@media (max-width: 360px) {
+    .navigation {
+        gap: 12px;
+        font-size: 0.9rem;
+    }
+
+    .card-content {
+        padding: 14px;
+    }
+
+    .featured img,
+    .card img {
+        height: 200px;
+    }
+}
